@@ -3,7 +3,7 @@ package School;
 public abstract class Persons {
     public String name;
     public String id;
-   
+    public String date_of_birth;
     public String address;
     public String phone;
     public int age;
