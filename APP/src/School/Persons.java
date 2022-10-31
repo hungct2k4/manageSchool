@@ -1,7 +1,5 @@
 package School;
 
-import javax.swing.JFrame;
-
 public abstract class Persons {
     public String name;
     public String id;
