@@ -161,6 +161,8 @@ public class App {
 
         System.out.print("Enter id: ");
         String id = scanner.nextLine();
+        System.out.print("Enter id: ");
+        String birthday = scanner.nextLine();
 
         System.out.print("Enter name: ");
         String name = scanner.nextLine();
@@ -179,7 +181,7 @@ public class App {
         scanner.nextLine();
         System.out.print("Enter subject: ");
         String subject = scanner.nextLine();
-        Teachers teacher = new Teachers(id, name, address, phone, age, gender, subject);
+        Teachers teacher = new Teachers(name, id, birthday, address, phone, age, gender, subject);
         System.out.println("------Update Successful------\n");
         return teacher;
     }
@@ -190,6 +192,9 @@ public class App {
 
         System.out.print("Enter id: ");
         String id = scanner.nextLine();
+
+        System.out.print("Enter id: ");
+        String birthday = scanner.nextLine();
         
         System.out.print("Enter name: ");
         String name = scanner.nextLine();
@@ -208,8 +213,8 @@ public class App {
 
         System.out.print("Enter Grade: ");
         String grade = scanner.nextLine();
-            
-        Students student = new Students(id, name, address, phone, age, gender, grade, score);           
+        
+        Students student = new Students(name, id, birthday, address, phone, age, gender, grade, score);
         System.out.println("------Update Successful------\n");
         return student;
         

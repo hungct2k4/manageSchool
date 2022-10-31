@@ -15,8 +15,7 @@ public class Manages {
         this._ManageStudent = _ManageStudent;
         this._ManageTeacher = _ManageTeachers;
     }
-
-
+    
     public void addStudent(Students _students) {
         Scores sc = new Scores();
         _students.scores = sc;
