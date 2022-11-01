@@ -37,7 +37,14 @@ public class App {
                     String text = scanner.nextLine();
                     switch (text) {
                         case "a": {
-                            manage.addStudent(InpuStudents());
+                            System.out.print("Enter id: ");
+                            String _id = scanner.nextLine();
+                            if (manage._ManageStudent.containsKey(_id)) {
+                                System.out.println("students have exist, Enter again");
+                                break;
+                            }
+                            else 
+                                manage.addStudent(InpuStudents(_id));
                             break;
                         }
                         case "b": {
@@ -50,7 +57,13 @@ public class App {
                             int number = Integer.parseInt(_number);
                             for (int i = 1; i <= number; i++) {
                                 System.out.println("Enter " + i + "th Students ");
-                                manage.addStudent(InpuStudents());
+                                System.out.print("Enter id: ");
+                                String _id = scanner.nextLine();
+                                if (manage._ManageStudent.containsKey(_id)) {
+                                    System.out.println("students have exist, Enter again");
+
+                                } else 
+                                    manage.addStudent(InpuStudents(_id));
                             }
                             break;
                         }
@@ -186,12 +199,11 @@ public class App {
         return teacher;
     }
 
-    public static Students InpuStudents() {
+    public static Students InpuStudents(String id) {
         Scores score = new Scores();
         Scanner scanner = new Scanner(System.in);        
 
-        System.out.print("Enter id: ");
-        String id = scanner.nextLine();
+        
 
         System.out.print("Enter id: ");
         String birthday = scanner.nextLine();
