@@ -7,7 +7,7 @@ import java.util.Map.Entry;
 public class Manages {
     Scanner scanner;
 
-    Hashtable<String, Students> _ManageStudent;
+    public Hashtable<String, Students> _ManageStudent;
     Hashtable<String, Teachers> _ManageTeacher;
 
 
@@ -17,8 +17,7 @@ public class Manages {
     }
     
     public void addStudent(Students _students) {
-        Scores sc = new Scores();
-        _students.scores = sc;
+        _students.scores = new Scores();
         this._ManageStudent.put(_students.getId(), _students);
     }
 

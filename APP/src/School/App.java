@@ -3,21 +3,20 @@ import java.util.Hashtable;
 import java.util.Scanner;
 
 import Admin.Scores;
+import InputF.FileInput;
 
 
 
 public class App {
 
-        public static Manages manage;
+        public static  Manages manage;
         public static Scanner scanner;
         public static void main(String[] args) throws Exception {
         // ArrayList<Students> students = new ArrayList<Students>();
         // ArrayList<Teacher> teachers = new ArrayList<Teacher>();
-
-        Hashtable<String, Students> ManageStudents = new Hashtable<String, Students>();
-        Hashtable<String, Teachers> ManageTeachers = new Hashtable<String, Teachers>();
-
-        manage = new Manages(ManageStudents, ManageTeachers);
+        manage = new Manages(new Hashtable<String, Students>(), new Hashtable<String, Teachers>());
+        
+        
         while (true) {
             System.out.println("-----------Application Manager Students and Teacher-----------");
             System.out.println("Enter 1:   Insert Person ");
@@ -25,7 +24,8 @@ public class App {
             System.out.println("Enter 3:   Find persions by id: ");
             System.out.println("Enter 4:   Add Score for Student");
             System.out.println("Enter 5:   Edit score");
-            System.out.println("Enter 6:   Exit:");
+            System.out.println("Enter 6:   Read file xml");
+            System.out.println("Enter 7:   Exit:");
             scanner = new Scanner(System.in);
             String line = scanner.nextLine();
             switch (line) {
@@ -133,7 +133,7 @@ public class App {
                     System.out.println("Enter Id ");
                     String id = scanner.nextLine();
                     manage.AddScoreForStudents(id, addScoreForStudent());
-                    break;
+                    break; 
                 }
                 case "5": {
                     System.out.println("Enter id ");
@@ -145,20 +145,13 @@ public class App {
                     manage.CheckExistStudents();
                     manage.EditScoreOfStudents(_id, _subject, newscore);
                 }
-                // Bao tri
-                // case "6": {
-                //     System.out.println("Enter grade: ");
-                //     String grade = scanner.nextLine();
-                    
-                //     if (manage.manageStudents.size() == 0)
-                //         System.out.println("Empty");  
-                //     else 
-                //         manage.ShowScore(grade); 
-                        
-                        
-                //     break;
-                // }
                 case "6": {
+                    FileInput file = new FileInput();
+                    manage._ManageStudent.putAll(file.ReadFileInput());
+                    file.ReadFileInput();
+                    break;
+                }
+                case "7": {
                     return;
                 }
                 default:
@@ -200,11 +193,7 @@ public class App {
     }
 
     public static Students InpuStudents(String id) {
-        Scores score = new Scores();
         Scanner scanner = new Scanner(System.in);        
-
-        
-
         System.out.print("Enter id: ");
         String birthday = scanner.nextLine();
         
@@ -226,7 +215,7 @@ public class App {
         System.out.print("Enter Grade: ");
         String grade = scanner.nextLine();
         
-        Students student = new Students(name, id, birthday, address, phone, age, gender, grade, score);
+        Students student = new Students(name, id, birthday, address, phone, age, gender, grade, new Scores());
         System.out.println("------Update Successful------\n");
         return student;
         
@@ -246,4 +235,5 @@ public class App {
         Scores gpa = new Scores(math, english, physics, music, science);
         return gpa;
     }
+    
 }
