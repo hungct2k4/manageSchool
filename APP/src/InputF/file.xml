@@ -6,7 +6,7 @@
 		<date_of_birth> 18-4 </date_of_birth>
 		<address> USA </address> 
 		<phone> 07288384 </phone>
-		<!-- <age>23</age> -->
+		<age>23</age>
 		<gender> Boy </gender>
 		<grade> IT1 </grade>
 	</student>
@@ -17,7 +17,7 @@
 		<date_of_birth> 4-2 </date_of_birth>
 		<address> UK </address> 
 		<phone> 9828499 </phone>
-		<!-- <age> 19 </age> -->
+		<age>19</age>
 		<gender> Boy </gender>
 		<grade> IT3 </grade>
 	</student>
@@ -28,7 +28,7 @@
 		<date_of_birth> 1-6 </date_of_birth>
 		<address> India </address> 
 		<phone> 723728 </phone>
-		<!-- <age> 29 </age> -->
+		<age>29</age>
 		<gender> girl </gender>
 		<grade> Docter-1 </grade>
 	</student>
@@ -39,7 +39,7 @@
 		<date_of_birth> 8-12 </date_of_birth>
 		<address> Scotland </address> 
 		<phone> 99999999 </phone>
-		<!-- <age> 23 </age> -->
+		<age>23</age>
 		<gender> Boy </gender>
 		<grade> IT1 </grade>
 	</student>

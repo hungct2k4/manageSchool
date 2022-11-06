@@ -6,9 +6,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 
 import Admin.Scores;
-import School.Manages;
 import School.Students;
-import School.Teachers;
 
 import org.w3c.dom.Node;
 import org.w3c.dom.Element;
@@ -47,10 +45,11 @@ public class FileInput {
 					String date_of_birth_ = tElement.getElementsByTagName("date_of_birth").item(0).getTextContent();
 					String address_ = tElement.getElementsByTagName("address").item(0).getTextContent();
 					String phone_ = tElement.getElementsByTagName("phone").item(0).getTextContent();
-					// int age_ = Integer.parseInt(tElement.getElementsByTagName("age").item(0).getTextContent());
+					String age_ = tElement.getElementsByTagName("age").item(0).getTextContent();
 					String gender_ = tElement.getElementsByTagName("gender").item(0).getTextContent();
 					String grade_ = tElement.getElementsByTagName("grade").item(0).getTextContent();
-					Students student_ = new Students(name_, id_, date_of_birth_, address_, phone_, 18, gender_, grade_, new Scores());
+
+					Students student_ = new Students(name_, id_, date_of_birth_, address_, phone_, Integer.parseInt(age_), gender_, grade_, new Scores());
 					
 					// System.out.println(manage._ManageStudent.get("A1").showInfor());
 					manageStudent_.put(student_.getId(), student_);

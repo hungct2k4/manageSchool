@@ -144,6 +144,7 @@ public class App {
                     Double newscore = scanner.nextDouble();
                     manage.CheckExistStudents();
                     manage.EditScoreOfStudents(_id, _subject, newscore);
+                    break;
                 }
                 case "6": {
                     FileInput file = new FileInput();
@@ -187,7 +188,8 @@ public class App {
         scanner.nextLine();
         System.out.print("Enter subject: ");
         String subject = scanner.nextLine();
-        Teachers teacher = new Teachers(name, id, birthday, address, phone, age, gender, subject);
+        Teachers teacher = new Teachers(name, id, birthday, address, phone, age, 
+            gender, subject);
         System.out.println("------Update Successful------\n");
         return teacher;
     }
