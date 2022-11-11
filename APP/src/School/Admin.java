@@ -3,19 +3,22 @@ import java.util.Hashtable;
 import java.util.Scanner;
 
 import Admin.Scores;
+import Calendars.Schedule;
 import InputF.FileInput;
+import LoginAndRegister.Account;
 
 
 
-public class App {
+public class Admin {
 
-        public static  Manages manage;
-        public static Scanner scanner;
-        public static void main(String[] args) throws Exception {
-        // ArrayList<Students> students = new ArrayList<Students>();
-        // ArrayList<Teacher> teachers = new ArrayList<Teacher>();
+    public static  Manages manage;
+    public static Scanner scanner;
+
+    public void Admin_Inteface() {
+    // ArrayList<Students> students = new ArrayList<Students>();
+    // ArrayList<Teacher> teachers = new ArrayList<Teacher>();
         manage = new Manages(new Hashtable<String, Students>(), new Hashtable<String, Teachers>());
-        
+    
         
         while (true) {
             System.out.println("-----------Application Manager Students and Teacher-----------");
@@ -37,7 +40,7 @@ public class App {
                     String text = scanner.nextLine();
                     switch (text) {
                         case "a": {
-                            System.out.print("Enter id: ");
+                            System.out.print("Enter id:");
                             String _id = scanner.nextLine();
                             if (manage._ManageStudent.containsKey(_id)) {
                                 System.out.println("students have exist, Enter again");
@@ -48,7 +51,14 @@ public class App {
                             break;
                         }
                         case "b": {
-                            manage.addTeacher(InputTeacher());
+                            System.out.print("Enter id: ");
+                            String _id = scanner.nextLine();
+                            if (manage._ManageTeacher.containsKey(_id)) {
+                                System.out.println("students have exist, Enter again");
+                                break;
+                            }
+                            else 
+                                manage.addTeacher(InputTeacher(_id));
                             break;
                         }
                         case "c": {
@@ -163,12 +173,11 @@ public class App {
     }
 
 
-    public static Teachers InputTeacher() {
+    public Teachers InputTeacher(String id) {
+        Account acc = new Account();    
+        acc.setId(id);
         Scanner scanner = new Scanner(System.in);        
-
-        System.out.print("Enter id: ");
-        String id = scanner.nextLine();
-        System.out.print("Enter id: ");
+        System.out.print("Enter birtday: ");
         String birthday = scanner.nextLine();
 
         System.out.print("Enter name: ");
@@ -188,15 +197,17 @@ public class App {
         scanner.nextLine();
         System.out.print("Enter subject: ");
         String subject = scanner.nextLine();
-        Teachers teacher = new Teachers(name, id, birthday, address, phone, age, 
-            gender, subject);
+        Teachers teacher = new Teachers(name, new Schedule(), birthday, address, phone, age, gender, acc);
         System.out.println("------Update Successful------\n");
         return teacher;
     }
 
-    public static Students InpuStudents(String id) {
-        Scanner scanner = new Scanner(System.in);        
-        System.out.print("Enter id: ");
+    public Students InpuStudents(String id) {
+        Scanner scanner = new Scanner(System.in);    
+        Account acc = new Account();    
+        acc.setId(id);
+        System.out.print("Enter birtday: ");
+
         String birthday = scanner.nextLine();
         
         System.out.print("Enter name: ");
@@ -217,25 +228,26 @@ public class App {
         System.out.print("Enter Grade: ");
         String grade = scanner.nextLine();
         
-        Students student = new Students(name, id, birthday, address, phone, age, gender, grade, new Scores());
+        Students student = new Students(name, new Schedule(), birthday, address, phone, age, gender, acc, grade, new Scores());
         System.out.println("------Update Successful------\n");
         return student;
         
     }
 
-    public static Scores addScoreForStudent() {
-        System.out.println("Enter Math");
-        Double math = scanner.nextDouble();
-        System.out.println("Enter English");
-        Double english = scanner.nextDouble();
-        System.out.println("Enter Music");
-        Double music = scanner.nextDouble();
-        System.out.println("Enter Science");
-        Double science = scanner.nextDouble();
-        System.out.println("Enter Physics");
-        Double physics = scanner.nextDouble();
-        Scores gpa = new Scores(math, english, physics, music, science);
-        return gpa;
-    }
+        public Scores addScoreForStudent() {
+            System.out.println("Enter Math");
+            Double math = scanner.nextDouble();
+            System.out.println("Enter English");
+            Double english = scanner.nextDouble();
+            System.out.println("Enter Music");
+            Double music = scanner.nextDouble();
+            System.out.println("Enter Science");
+            Double science = scanner.nextDouble();
+            System.out.println("Enter Physics");
+            Double physics = scanner.nextDouble();
+            Scores gpa = new Scores(math, english, physics, music, science);
+            return gpa;
+        }
     
-}
+ }
+

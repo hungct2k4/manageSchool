@@ -6,9 +6,16 @@ import java.util.Map.Entry;
 
 public class Manages {
     Scanner scanner;
-
+    private String id = "admin";
+    public String getId() {
+        return id;
+    }
+    private String password = "admin";
+    public String getPassword() {
+        return password;
+    }
     public Hashtable<String, Students> _ManageStudent;
-    Hashtable<String, Teachers> _ManageTeacher;
+    public Hashtable<String, Teachers> _ManageTeacher;
 
 
     public Manages(Hashtable<String, Students> _ManageStudent, Hashtable<String, Teachers> _ManageTeachers) {
@@ -18,7 +25,7 @@ public class Manages {
     
     public void addStudent(Students _students) {
         _students.scores = new Scores();
-        this._ManageStudent.put(_students.getId(), _students);
+        this._ManageStudent.put(_students.getAcc().getId(), _students);
     }
 
     public void AddScoreForStudents(String id, Scores gpa) {
@@ -26,8 +33,8 @@ public class Manages {
     }
 
     public void addTeacher(Teachers teacher) {
-        if (!this._ManageTeacher.containsKey(teacher.getId()))
-            this._ManageTeacher.put(teacher.getId(), teacher);
+        if (!this._ManageTeacher.containsKey(teacher.getAcc().getId()))
+            this._ManageTeacher.put(teacher.getAcc().getId(), teacher);
     }
 
     public void ShowScoreGrade (String grade) {
